@@ -1,0 +1,19 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: jobyaml
+spec:
+  completions: 8
+  parallelism: 2
+  template:
+    metadata:
+      labels:
+        app: jobsapp
+    spec:
+      containers:
+      - name: con1
+        image: docker/whalesay
+        command: ["cowsay", "this is a job"]
+      restartPolicy: OnFailure
+  backoffLimit: 4
+  activeDeadlineSeconds: 90

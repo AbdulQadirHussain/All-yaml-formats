@@ -1,0 +1,26 @@
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: rsyaml
+  namespace: dev
+  labels:
+    app: rsapp
+    type: frontend
+    env: dev
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: rsapp
+      type: frontend
+  template:
+    metadata:
+      labels:
+        app: rsapp
+        type: frontend
+    spec:
+      containers:
+      - name: con1
+        image: aamirpinger/helloworld
+        ports:
+        - containerPort: 80

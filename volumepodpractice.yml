@@ -1,0 +1,18 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: volumepod
+spec:
+  volumes:
+  - name: appname-mount
+    hostPath:
+      path: /mnt/c/Users/haier/data/host
+      type: Directory
+  containers:
+  - name: con1
+    image: aamirpinger/flag
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: appname-mount
+      mountPath: /data

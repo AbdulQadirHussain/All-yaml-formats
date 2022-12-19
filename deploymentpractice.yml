@@ -1,0 +1,33 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: deployyml
+  namespace: dev
+  labels:
+    app: deployapp
+    type: frontend
+    env: dev
+  annotations:
+    name: "Abdul Qadir"
+    email: aqadirhussain@gmail.com
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: deployapp
+      type: frontend
+  template:
+    metadata:
+      labels:
+        app: deployapp
+        type: frontend
+    spec:
+      containers:
+      - name: con1
+        image: aamirpinger/helloworld
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            port: 80
+            path: /

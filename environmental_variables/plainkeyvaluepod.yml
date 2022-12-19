@@ -1,0 +1,17 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: envplainkeyvalue
+spec:
+  containers:
+  - name: con1
+    image: aamirpinger/helloworld
+    ports:
+    - containerPort: 80
+    env:
+    - name: APP_COLOR
+      value: pink
+    - name: APP_LOGO_COLOR
+      value: blue
+    - name: APP_MODE
+      value: dev

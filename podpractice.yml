@@ -1,0 +1,29 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: podyaml
+  namespace: dev
+  labels:
+    app: podapp
+    type: frontend
+    env: dev
+  annotations:
+    createdby: Abdul Qadir
+    email: aqadirhussain@gmail.com
+    contact: "123456789"
+spec:
+#  nodeSelector:
+#    typeanyselector: ssd
+  containers:
+  - name: con1
+    image: aamirpinger/helloworld:latest
+    ports:
+    - containerPort: 80
+    livenessProbe:
+      exec:
+        command:
+        - ls
+    readinessProbe:
+      httpGet:
+        port: 80
+        path: /

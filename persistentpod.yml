@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod-pv
+spec:
+  volumes:
+  - name: pv-vol-pod
+    persistentVolumeClaim:
+      claimName: pervolclaim1
+  containers:
+  - name: con1
+    image: aamirpinger/logfile_nodejs
+    volumeMounts:
+    - name: pv-vol-pod
+      mountPath: /data

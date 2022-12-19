@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: configmapsingleenv
+spec:
+  containers:
+  - name: con1
+    image: aamirpinger/helloworld
+    ports:
+    - containerPort: 80
+    env:
+    - name: APP_MODE
+      valueFrom:
+        configMapKeyRef:
+          name: configmap-sin-env
+          key: APP_MODE

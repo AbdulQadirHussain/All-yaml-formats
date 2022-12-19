@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: configmapvolume
+spec:
+  volumes:
+  - name: cmvol
+    configMap:
+      name: cmfl
+  containers:
+  - name: con1
+    image: aamirpinger/helloworld
+    volumeMounts:
+    - name: cmvol
+      mountPath: /var/data

@@ -1,0 +1,13 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pervolclaim1
+spec:
+  accessModes:
+  - ReadWriteOnce
+# - ReadOnlyMany
+# - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Mi
+  storageClassName: ""

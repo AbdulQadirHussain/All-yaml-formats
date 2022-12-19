@@ -1,0 +1,23 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: volumepodsharedhost
+spec:
+  volumes:
+  - name: sharedvol
+    emptyDir: {}
+  containers:
+  - name: con1
+    image: aamirpinger/logfile_nodejs
+    ports:
+    - containerPort: 8080
+    volumeMounts:
+    - name: sharedvol
+      mountPath: /data
+  - name: con2
+    image: aamirpinger/helloworld
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: sharedvol
+      mountPath: /var/data
